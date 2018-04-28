@@ -12,20 +12,26 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver mReceiver;
     int battery_level;
     String TAG = "Battery";
-    ProgressBar progressBar;
-    TextView tvBattery;
+
+
+    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.tvBattery) TextView tvBattery;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         mReceiver = new BatteryBroadcastReceiver();
-        progressBar = findViewById(R.id.progressBar);
-        tvBattery = findViewById(R.id.tvBattery);
 
     }
 
